@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #007B33;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Database</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for students...">
+            <button onclick="searchTable()">Search</button>
+        </div>
+        <a href="/add">Add New Student</a>
+        <table id="studentTable" border="2">
+            <tr>
+                <th>Serial</th>
+                <th>Name</th>
+                <th>College number</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Parent's Phone</th>
+                <th>Actions</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_number }}</td>
+                <td>{{ student.student_class }}</td>
+                <td>{{ student.section }}</td>
+                <td>{{ student.parent_phone }}</td>
+                <td>
+                    <a href="/delete/{{ student.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        function searchTable() {
+            // Get input value and table elements
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let table = document.getElementById("studentTable");
+            let rows = table.getElementsByTagName("tr");
+
+            // Loop through table rows (skipping the header row)
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                let match = false;
+
+                // Loop through all cells in the row
+                for (let j = 0; j < cells.length; j++) {
+                    let cellValue = cells[j].textContent || cells[j].innerText;
+                    if (cellValue.toLowerCase().indexOf(input) > -1) {
+                        match = true;
+                        break;
+                    }
+                }
+
+                // Show or hide the row based on the match
+                rows[i].style.display = match ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

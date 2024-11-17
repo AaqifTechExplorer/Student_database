@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Student</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Container for the content */
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        form {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: inline-block;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #f0f8ff;
+            color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #d8f7d8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Student</h1>
+        <form method="POST">
+            <label>Name:</label><br>
+            <input type="text" name="name" required><br>
+            
+            <label>Roll Number:</label><br>
+            <input type="text" name="roll_number" required><br>
+            
+            <label>Class:</label><br>
+            <input type="text" name="class" required><br>
+            
+            <label>Section:</label><br>
+            <input type="text" name="section" required><br>
+            
+            <label>Parent's Phone:</label><br>
+            <input type="text" name="parent_phone" required><br><br>
+            
+            <button type="submit">Add Student</button>
+        </form>
+        <br>
+        <a href="/">Back to List</a>
+    </div>
+</body>
+</html>
